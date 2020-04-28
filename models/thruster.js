@@ -1,7 +1,7 @@
 "use strict";
 class Thruster {
     constructor(maxPower) {
-        this._maxPower = maxPower;
-        this._currentPower = 0;
+        this.maxPower = maxPower;
+        this.currentPower = 0;
     }
 }

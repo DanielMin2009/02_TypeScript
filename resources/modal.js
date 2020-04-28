@@ -11,8 +11,8 @@ document.getElementById("close-btnLeft").addEventListener("click", function () {
 });
 
 document.getElementById("btnCreateRocketLeft").addEventListener("click", function () {
-    document.getElementById("overlayAdd").classList.remove("is-visible");
-    document.getElementById("modalAdd").classList.remove("is-visible");
+    document.getElementById("overlayLeft").classList.remove("is-visible");
+    document.getElementById("modalLeft").classList.remove("is-visible");
 });
 
 document.getElementById("overlayLeft").addEventListener("click", function () {

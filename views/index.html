@@ -51,7 +51,7 @@
         </div>
       </article>
       <main class="row">
-        <section class="col-12 col-lg-6 myFlexLeft">
+        <section id="rocketLeft" class="col-12 col-lg-6 myFlexLeft dnone">
           <button class="modal-close-btn btn" id="close-btn02">
             <a class="close-button red"></a>
           </button>
@@ -68,7 +68,7 @@
           >
             <svg
               height="100%"
-              width="auto"
+              width="100%"
               id="rocket-left"
               style="enable-background: new 0 0 256 256;"
               version="1.1"
@@ -337,7 +337,7 @@
           </div>
         </section>
 
-        <section class="col-12 col-lg-6 myFlexRight">
+        <section id="rocketRight" class="col-12 col-lg-6 myFlexRight dnone">
           <button class="modal-close-btn btn" id="close-btn02">
             <a class="close-button blue"></a>
           </button>
@@ -362,7 +362,7 @@
           >
             <svg
               height="100%"
-              width="auto"
+              width="100%"
               id="rocket-right"
               style="enable-background: new 0 0 256 256;"
               version="1.1"
@@ -624,10 +624,10 @@
         </section>
       </main>
       <aside class="row answer">
-        <section id="answerLeft" class="col-12 col-lg-6 padLarge answerFlex">
+        <section id="answerLeft" class="col-12 col-lg-6 padLarge answerFlex dnone">
           <ul>
             <li>Rocket Code</li>
-            <li>Boosters Power</li>
+            <li>Thrusters Power</li>
             <li>Rocket Speed</li>
           </ul>
           <ul>
@@ -637,10 +637,10 @@
           </ul>
         </section>
 
-        <section id="answerRight" class="col-12 col-lg-6 padLarge answerFlex">
+        <section id="answerRight" class="col-12 col-lg-6 padLarge answerFlex dnone">
           <ul>
             <li>Rocket Code</li>
-            <li>Boosters Power</li>
+            <li>Thrusters Power</li>
             <li>Rocket Speed</li>
           </ul>
           <ul>
@@ -651,12 +651,18 @@
         </section>
       </aside>
       <footer class="row">
-        <div id="createBtnLeft" class="col-12 col-md-6 d-flex justify-content-center padRightM">
+        <div
+          id="createBtnLeft"
+          class="col-12 col-md-6 d-flex justify-content-center padRightM"
+        >
           <button class="btnRounded btn" id="btn-modalMars">
             Go to Mars <i class="fas fa-rocket red"></i>
           </button>
         </div>
-        <div id="createBtnRight" class="col-12 col-md-6 d-flex justify-content-center padLeftM">
+        <div
+          id="createBtnRight"
+          class="col-12 col-md-6 d-flex justify-content-center padLeftM"
+        >
           <button class="btnRounded btn" id="btn-modalSaturn">
             Go to Saturn <i class="fas fa-rocket blue"></i>
           </button>
@@ -675,28 +681,28 @@
 
           <div class="rowInp">
             <label>Code</label><br />
-            <input type="text" id="txtCode1" value="32WESSDS" />
-            <span id="errorCode1"></span>
+            <input type="text" id="txtCodeLeft" value="32WESSDS" />
+            <span id="errorCodeLeft"></span>
           </div>
 
           <div class="rowInp">
-            <label>Num of Boosters</label><br />
-            <input type="number" id="txtBoosters1" value="3" />
-            <span id="errorBoosters1"></span>
+            <label>Num of Thruster</label><br />
+            <input type="number" id="numThrustersLeft" value="3" />
+            <span id="errorThrustersLeft"></span>
           </div>
 
           <div class="rowInp griddy3">
             <div>
-              <label>Power Booster 1</label><br />
-              <input type="number" id="powerBoosterLeft1" value="10" />
+              <label>Power Thruster 1</label><br />
+              <input type="number" id="powerThrusterLeft1" value="10" />
             </div>
             <div>
-              <label>Power Booster 2</label><br />
-              <input type="number" id="powerBoosterLeft2" value="30" />
+              <label>Power Thruster 2</label><br />
+              <input type="number" id="powerThrusterLeft2" value="30" />
             </div>
             <div>
-              <label>Power Booster 3</label><br />
-              <input type="number" id="powerBoosterLeft3" value="80" />
+              <label>Power Thruster 3</label><br />
+              <input type="number" id="powerThrusterLeft3" value="80" />
             </div>
           </div>
 
@@ -705,7 +711,7 @@
               type="button"
               id="btnCreateRocketLeft"
               class="btnPopUp btn"
-              onclick="createRocketLeft()"
+              onclick="sendFormLeft()"
             >
               Create rocket <i class="fas fa-rocket red"></i>
             </button>
@@ -720,46 +726,46 @@
         <button class="modal-close-btn btn" id="close-btnRight">
           <a class="close-button"></a>
         </button>
-        <!-- create Rocket Form -->  
+        <!-- create Rocket Form -->
         <form id="rocketRightForm">
           <h3>Go to Saturn</h3>
 
           <div class="rowInp">
             <label>Code</label><br />
-            <input type="text" id="txtCode1" value="LDSFJA32" />
-            <span id="errorCode1"></span>
+            <input type="text" id="txtCodeRight" value="LDSFJA32" />
+            <span id="errorCodeRight"></span>
           </div>
 
           <div class="rowInp">
-            <label>Num of Boosters</label><br />
-            <input type="number" id="txtBoosters1" min="1" max="9" value="6" />
-            <span id="errorBoosters1"></span>
+            <label>Num of Thruster</label><br />
+            <input type="number" id="numThrustersRight" min="1" max="9" value="6" />
+            <span id="errorThrustersRight"></span>
           </div>
 
           <div class="rowInp griddy6">
             <div>
-              <label>Power Booster 1</label><br />
-              <input type="number" id="powerBoosterRight1" value="30" />
+              <label>Power Thruster 1</label><br />
+              <input type="number" id="powerThrusterRight1" value="30" />
             </div>
             <div>
-              <label>Power Booster 2</label><br />
-              <input type="number" id="powerBoosterRight2" value="40" />
+              <label>Power Thruster 2</label><br />
+              <input type="number" id="powerThrusterRight2" value="40" />
             </div>
             <div>
-              <label>Power Booster 3</label><br />
-              <input type="number" id="powerBoosterRight3" value="50" />
+              <label>Power Thruster 3</label><br />
+              <input type="number" id="powerThrusterRight3" value="50" />
             </div>
             <div>
-              <label>Power Booster 4</label><br />
-              <input type="number" id="powerBoosterRight4" value="50" />
+              <label>Power Thruster 4</label><br />
+              <input type="number" id="powerThrusterRight4" value="50" />
             </div>
             <div>
-              <label>Power Booster 5</label><br />
-              <input type="number" id="powerBoosterRight5" value="30" />
+              <label>Power Thruster 5</label><br />
+              <input type="number" id="powerThrusterRight5" value="30" />
             </div>
             <div>
-              <label>Power Booster 6</label><br />
-              <input type="number" id="powerBoosterRight6" value="10" />
+              <label>Power Thruster 6</label><br />
+              <input type="number" id="powerThrusterRight6" value="10" />
             </div>
           </div>
 
@@ -768,7 +774,7 @@
               type="button"
               id="btnCreateRocketRight"
               class="btnPopUp btn"
-              onclick="createRocketRight()"
+              onclick="sendFormRight()"
             >
               Create rocket <i class="fas fa-rocket blue"></i>
             </button>
@@ -776,8 +782,6 @@
         </form>
       </div>
       <!-- End of Rocket Form Right -->
-
-      
     </div>
 
     <script src="../resources/modal.js"></script>

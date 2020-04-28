@@ -1,25 +1,27 @@
 class Rocket {
-    _code: string;
-    _thrusters: Thruster[] = new Array();
+    code: string;
+    thrusters: Thruster[] = new Array();
+    numThrusters: number;
 
-    constructor(code: string) {
-        this._code = code;
-        this._thrusters = new Array();
+    constructor(code: string, numThrusters: number) {
+        this.code = code;
+        this.numThrusters = numThrusters;
+        this.thrusters = new Array();
     }
 
-    set code(code: string) {
-        this._code = code;
+    set setCode(code: string) {
+        this.code = code;
     }
-    get code(): string { 
-        return this._code;
+    get getCode(): string { 
+        return this.code;
     }    
-    get thrusters() {
-        return this._thrusters
+    get getThrusters() {
+        return this.thrusters
     }
 
     // mètode afegir propulsor al coet
     addThruster(thruster: Thruster): void {
-        this._thrusters.push(thruster); 
+        this.thrusters.push(thruster); 
     } 
 
     // mètode accelerar 
