@@ -27,7 +27,7 @@
     />
   </head>
 
-  <body>
+  <body onload="displaElements()">
     <div class="container">
       <article class="row">
         <div class="col-10">
@@ -51,14 +51,14 @@
         </div>
       </article>
       <main class="row">
-        <section id="rocketLeft" class="col-12 col-lg-6 myFlexLeft dnone">
-          <button class="modal-close-btn btn" id="close-btn02">
+        <section id="rocketMars" class="col-12 col-lg-6 myFlexLeft d-none">
+          <button onclick="openModalDelete('Mars')" class="modal-close-btn btn" id="close-btnMars">
             <a class="close-button red"></a>
           </button>
           <!-- Arrows Left -->
           <div class="arrows">
-            <div class="arrowUpLeft"></div>
-            <div class="arrowDownLeft"></div>
+            <div onclick="raisePowerMars()" class="arrowUpLeft"></div>
+            <div onclick="reducePowerMars()" class="arrowDownLeft"></div>
           </div>
           <span class="rotatedTextLeft">power control</span>
           <object
@@ -322,8 +322,7 @@
             </svg>
           </object>
           <div class="asterisks">
-            <ul>
-              <li id="leftStar10"><i class="fas fa-star-of-life"></i></li>
+            <ul id="asterisksMars">
               <li id="leftStar09"><i class="fas fa-star-of-life"></i></li>
               <li id="leftStar08"><i class="fas fa-star-of-life"></i></li>
               <li id="leftStar07"><i class="fas fa-star-of-life"></i></li>
@@ -337,13 +336,12 @@
           </div>
         </section>
 
-        <section id="rocketRight" class="col-12 col-lg-6 myFlexRight dnone">
-          <button class="modal-close-btn btn" id="close-btn02">
+        <section id="rocketSaturn" class="col-12 col-lg-6 offset-lg-6 myFlexRight d-none">
+          <button onclick="openModalDelete('Saturn')" class="modal-close-btn btn" id="close-btnSaturn">
             <a class="close-button blue"></a>
           </button>
           <div class="asterisks">
-            <ul>
-              <li id="rightStar10"><i class="fas fa-star-of-life"></i></li>
+            <ul id="asterisksSaturn">
               <li id="rightStar09"><i class="fas fa-star-of-life"></i></li>
               <li id="rightStar08"><i class="fas fa-star-of-life"></i></li>
               <li id="rightStar07"><i class="fas fa-star-of-life"></i></li>
@@ -618,36 +616,38 @@
           <!-- Arrows Right -->
           <span class="rotatedTextRight">power control</span>
           <div class="arrows">
-            <div class="arrowUpRight"></div>
-            <div class="arrowDownRight"></div>
+            <div onclick="raisePowerSaturn()" class="arrowUpRight"></div>
+            <div onclick="reducePowerSaturn()" class="arrowDownRight"></div>
           </div>
         </section>
       </main>
       <aside class="row answer">
-        <section id="answerLeft" class="col-12 col-lg-6 padLarge answerFlex dnone">
-          <ul>
+        <section id="answerLeft" class="col-12 col-lg-6 padLarge answerFlex">
+          <ul id="listMars">
             <li>Rocket Code</li>
-            <li>Thrusters Power</li>
+            <li><span id="answerNumMars"></span>Thrusters - Powers</li>
             <li>Rocket Speed</li>
           </ul>
-          <ul>
-            <li id="answerCode1">32WESSDS</li>
-            <li id="answerPower1">10, 30, 80</li>
-            <li id="answerSpeed1">1200</li>
+          <ul id="dataMars">
+            <li id="answerCodeMars"></li>
+            <li><span id="answerPowerMars"></span></li>
+            <li id="answerSpeedMars"></li>
           </ul>
+          <p id="issuesMars"></p>
         </section>
 
-        <section id="answerRight" class="col-12 col-lg-6 padLarge answerFlex dnone">
-          <ul>
+        <section id="answerRight" class="col-12 col-lg-6 padLarge answerFlex">
+          <ul id="listSaturn">
             <li>Rocket Code</li>
-            <li>Thrusters Power</li>
+            <li><span id="answerNumSaturn"></span>Thrusters - Powers</li>
             <li>Rocket Speed</li>
           </ul>
-          <ul>
-            <li id="answerCode2">LDSFJA32</li>
-            <li id="answerPower2">30, 40, 50, 50, 30, 10</li>
-            <li id="answerSpeed2">1000</li>
+          <ul id="dataSaturn">
+            <li id="answerCodeSaturn"></li>
+            <li><span id="answerPowerSaturn"></span></li>
+            <li id="answerSpeedSaturn"></li>
           </ul>
+          <p id="issuesSaturn"></p>
         </section>
       </aside>
       <footer class="row">
@@ -655,7 +655,11 @@
           id="createBtnLeft"
           class="col-12 col-md-6 d-flex justify-content-center padRightM"
         >
-          <button class="btnRounded btn" id="btn-modalMars">
+          <button
+            class="btnRounded btn btn-openModal"
+            onclick="openModalForm('openFormMars')"
+            id="openFormMars"
+          >
             Go to Mars <i class="fas fa-rocket red"></i>
           </button>
         </div>
@@ -663,132 +667,215 @@
           id="createBtnRight"
           class="col-12 col-md-6 d-flex justify-content-center padLeftM"
         >
-          <button class="btnRounded btn" id="btn-modalSaturn">
+          <button
+            onclick="openModalForm('openFormSaturn')"
+            class="btnRounded btn btn-openModal"
+            id="openFormSaturn"
+          >
             Go to Saturn <i class="fas fa-rocket blue"></i>
           </button>
         </div>
       </footer>
 
       <!--Begin of modal 01-->
-      <div class="overlay" id="overlayLeft"></div>
-      <div class="popUp" id="modalLeft">
-        <button class="modal-close-btn btn" id="close-btnLeft">
+      <div class="overlay" id="overlayForm"></div>
+      <div class="popUp" id="modalForm">
+        <button
+          onclick="closeModalForm()"
+          class="modal-close-btn btn"
+          id="close-btnForm"
+        >
           <a class="close-button"></a>
         </button>
         <!-- create Rocket Form -->
-        <form id="rocketLeftForm">
-          <h3>Go to Mars</h3>
+        <form id="rocketForm">
+          <h3 class="d-none" id="titleMars">Go to Mars</h3>
+          <h3 class="d-none" id="titleSaturn">Go to Saturn</h3>
 
           <div class="rowInp">
             <label>Code</label><br />
-            <input type="text" id="txtCodeLeft" value="32WESSDS" />
-            <span id="errorCodeLeft"></span>
+            <input type="text" id="txtCode" value="" />
+            <span id="errorCode"></span>
           </div>
 
+          <label>Number of Thrusters</label>
           <div class="rowInp">
-            <label>Num of Thruster</label><br />
-            <input type="number" id="numThrustersLeft" value="3" />
-            <span id="errorThrustersLeft"></span>
+            <input
+              type="number"
+              id="selectNum"
+              value=""
+              min="1"
+              max="9"
+              step="1"
+            />
+            </select>
+            <span id="errorThrusters"></span>
           </div>
 
-          <div class="rowInp griddy3">
-            <div>
-              <label>Power Thruster 1</label><br />
-              <input type="number" id="powerThrusterLeft1" value="10" />
-            </div>
-            <div>
-              <label>Power Thruster 2</label><br />
-              <input type="number" id="powerThrusterLeft2" value="30" />
-            </div>
-            <div>
-              <label>Power Thruster 3</label><br />
-              <input type="number" id="powerThrusterLeft3" value="80" />
-            </div>
+          <label>Thrusters Power</label>
+          <div id="powers" class="rowInp griddy9">
+            <input
+              type="number"
+              id="powerThruster1"
+              min="10"
+              max="100"
+              step="10"
+              value="30"
+              style="display: none;"
+            />
+            <input
+              type="number"
+              id="powerThruster2"
+              min="10"
+              max="100"
+              step="10"
+              value="40"
+              style="display: none;"
+            />
+            <input
+              type="number"
+              id="powerThruster3"
+              min="10"
+              max="100"
+              step="10"
+              value="50"
+              style="display: none;"
+            />
+            <input
+              type="number"
+              id="powerThruster4"
+              min="10"
+              max="100"
+              step="10"
+              value="50"
+              style="display: none;"
+            />
+            <input
+              type="number"
+              id="powerThruster5"
+              min="10"
+              max="100"
+              step="10"
+              value="30"
+              style="display: none;"
+            />
+            <input
+              type="number"
+              id="powerThruster6"
+              min="10"
+              max="100"
+              step="10"
+              value="10"
+              style="display: none;"
+            />
+            <input
+              type="number"
+              id="powerThruster7"
+              min="10"
+              max="100"
+              step="10"
+              value=""
+              style="display: none;"
+            />
+            <input
+              type="number"
+              id="powerThruster8"
+              min="10"
+              max="100"
+              step="10"
+              value=""
+              style="display: none;"
+            />
+            <input
+              type="number"
+              id="powerThruster9"
+              min="10"
+              max="100"
+              step="10"
+              value=""
+              style="display: none;"
+            />
+            <span id="errorThrusters"></span>
           </div>
+          <!--End of Thrusters Power Saturn-->
 
           <div class="rowInp">
             <button
               type="button"
-              id="btnCreateRocketLeft"
-              class="btnPopUp btn"
-              onclick="sendFormLeft()"
+              class="btnPopUp btn d-none"
+              onclick="createRocket('Mars')"
+              id="btnMars"
+            >
+              Create rocket <i class="fas fa-rocket red"></i>
+            </button>
+            <button
+              type="button"
+              class="btnPopUp btn d-none"
+              onclick="createRocket('Saturn')"
+              id="btnSaturn"
             >
               Create rocket <i class="fas fa-rocket red"></i>
             </button>
           </div>
         </form>
       </div>
-      <!-- End of Rocket Form Left -->
+      <!-- End of Rocket Form -->
 
       <!--Begin of modal 01-->
-      <div class="overlay" id="overlayRight"></div>
-      <div class="popUp" id="modalRight">
-        <button class="modal-close-btn btn" id="close-btnRight">
+      <div class="overlay" id="overlayDelete"></div>
+      <div class="popUp" id="modalDelete">
+        
+        <h3>¿Delete or Hide Rocket?</h3>
+        <button
+          onclick="closeModalDelete()"
+          class="modal-close-btn btn"
+          id="close-btnDelete"
+        >
           <a class="close-button"></a>
         </button>
-        <!-- create Rocket Form -->
-        <form id="rocketRightForm">
-          <h3>Go to Saturn</h3>
-
-          <div class="rowInp">
-            <label>Code</label><br />
-            <input type="text" id="txtCodeRight" value="LDSFJA32" />
-            <span id="errorCodeRight"></span>
-          </div>
-
-          <div class="rowInp">
-            <label>Num of Thruster</label><br />
-            <input type="number" id="numThrustersRight" min="1" max="9" value="6" />
-            <span id="errorThrustersRight"></span>
-          </div>
-
-          <div class="rowInp griddy6">
-            <div>
-              <label>Power Thruster 1</label><br />
-              <input type="number" id="powerThrusterRight1" value="30" />
-            </div>
-            <div>
-              <label>Power Thruster 2</label><br />
-              <input type="number" id="powerThrusterRight2" value="40" />
-            </div>
-            <div>
-              <label>Power Thruster 3</label><br />
-              <input type="number" id="powerThrusterRight3" value="50" />
-            </div>
-            <div>
-              <label>Power Thruster 4</label><br />
-              <input type="number" id="powerThrusterRight4" value="50" />
-            </div>
-            <div>
-              <label>Power Thruster 5</label><br />
-              <input type="number" id="powerThrusterRight5" value="30" />
-            </div>
-            <div>
-              <label>Power Thruster 6</label><br />
-              <input type="number" id="powerThrusterRight6" value="10" />
-            </div>
-          </div>
-
-          <div class="rowInp">
-            <button
-              type="button"
-              id="btnCreateRocketRight"
-              class="btnPopUp btn"
-              onclick="sendFormRight()"
-            >
-              Create rocket <i class="fas fa-rocket blue"></i>
-            </button>
-          </div>
-        </form>
+        <div id="deleteBtnsMars" class="rowInp griddy2">
+          <button
+            type="button"
+            class="btnPopUp btn"
+            onclick="deleteRocketMars()"
+            id="btnDeleteMars"
+          >
+            Delete rocket <i class="fas fa-trash-alt"></i>
+          </button>
+          <button
+            type="button"
+            class="btnPopUp btn"
+            onclick="hideRocketMars()"
+            id="btnHideMars"
+          >
+            Hide rocket <i class="fas fa-eye-slash"></i>
+        </div>
+        <div id="deleteBtnsSaturn" class="rowInp griddy2">
+          <button
+            type="button"
+            class="btnPopUp btn"
+            onclick="deleteRocketSaturn()"
+            id="btnDeleteSaturn"
+          >
+           Delete rocket <i class="fas fa-trash-alt"></i>
+          </button>
+          <button
+            type="button"
+            class="btnPopUp btn"
+            onclick="hideRocketSaturn()"
+            id="btnHideSaturn"
+          >
+            Hide rocket <i class="fas fa-eye-slash"></i>
+          </button>
+        </div>
       </div>
-      <!-- End of Rocket Form Right -->
+      <!-- End of Rocket Form -->
     </div>
+    <!-- End of DOC -->
 
     <script src="../resources/modal.js"></script>
-
     <script src="../models/rocket.js"></script>
     <script src="../models/thruster.js"></script>
-    <script src="../models/ui.js"></script>
     <script src="../controllers/controller.js"></script>
   </body>
 </html>

@@ -34,7 +34,7 @@ aside {
 }
 
 footer {
-    height: 24vh;
+    height    : 24vh;
     margin-top: -22vh;
 }
 
@@ -128,7 +128,9 @@ option {
 .rowInp>label,
 .rowInp>div>input,
 .rowInp>div>label,
-.btnRounded {
+.rowInp span,
+.btnRounded,
+form label {
     font-size: 0.76rem;
 }
 
@@ -137,17 +139,24 @@ option {
     width              : 100%;
     -webkit-user-select: none;
     /* Safari */
-    -ms-user-select: none;
+    -ms-user-select    : none;
     /* IE 10+ and Edge */
-    user-select: none;
+    user-select        : none;
     /* Standard syntax */
-    padding      : 1rem;
-    border-radius: 3px;
-    margin-bottom: 1.1rem;
+    padding            : 1rem;
+    border-radius      : 3px;
+    margin-bottom      : 1.1rem;
+}
+.griddy2 {
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows   : auto;
+    grid-column-gap      : 1.1rem;
 }
 
 .griddy3,
-.griddy6 {
+.griddy6,
+.griddy9 {
     display              : grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows   : auto;
@@ -162,6 +171,13 @@ option {
 .btnPopUp {
     height    : 53px;
     width     : 50%;
+    font-size : 0.76rem;
+    margin-top: 1.1rem;
+}
+
+.griddy2 .btnPopUp {
+    height    : 53px;
+    width     : 100%;
     font-size : 0.76rem;
     margin-top: 1.1rem;
 }
@@ -209,7 +225,7 @@ option {
 }
 
 /*@media screen and (min-width: 992px) and (max-width: 1450px) {*/
-@media screen and (min-width  : 768px) {
+@media screen and (min-width : 768px) {
     .padRightM {
         padding-right: 3rem;
     }
@@ -242,11 +258,7 @@ option {
 .answerFlex {
     display              : grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows   : 1fr;
     grid-column-gap      : 0px;
-    grid-row-gap         : 20px;
-    justify-items        : stretch;
-    align-items          : stretch;
 }
 
 .answerFlex li {
@@ -263,15 +275,15 @@ option {
 }
 
 
-#answerCode1,
-#answerPower1,
-#answerSpeed1 {
+#answerCodeMars,
+#answerPowerMars,
+#answerSpeedMars {
     color: #e73845;
 }
 
-#answerCode2,
-#answerPower2,
-#answerSpeed2 {
+#answerCodeSaturn,
+#answerPowerSaturn,
+#answerSpeedSaturn {
     color: #00b1ff;
 }
 
@@ -396,13 +408,13 @@ option {
     transform        : rotate(180deg);
 }
 
-.red:hover:after,
-.red:hover:before {
+.close-button.red:hover:after,
+.close-button.red:hover:before {
     background: #e73845;
 }
 
-.blue:hover:after,
-.blue:hover:before {
+.close-button.blue:hover:after,
+.close-button.blue:hover:before {
     background: #00b1ff;
 }
 
@@ -712,6 +724,7 @@ select::-ms-expand {
 
 /** ARROWS **/
 
+
 .rotatedTextLeft,
 .rotatedTextRight {
     transform     : rotate(270deg);
@@ -734,6 +747,13 @@ select::-ms-expand {
 .arrowDownRight {
     height: 70px;
     width : 60px;
+}
+
+.arrowUpLeft:hover,
+.arrowDownLeft:hover,
+.arrowUpRight:hover,
+.arrowDownRight:hover {
+    cursor: pointer;
 }
 
 .arrowUpLeft,
