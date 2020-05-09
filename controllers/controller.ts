@@ -105,7 +105,7 @@ var createThrusters = (thrusters: Thruster[]) => {
 }
 
 // En aquest punt, quan vull tornar a controlar la 
-var raisePowerMars = () => {
+var raisePowerMars = (thrusters: Thruster[]) => {
     let arrowUpMars: any = answerCodeMars.textContent;
     let i: number;
     for (i = 0; i < rockets.length; i++) {
@@ -115,17 +115,6 @@ var raisePowerMars = () => {
             console.log(showSpeedMars(rockets[i]));
         }
     }
-    let j: number;
-    for (j = 1; j < 10; j++) {
-        let leftStar: any = (<HTMLInputElement>document.getElementById("leftStar0" + j));
-        leftStar.style.display = "none";
-    }
-
-    let starsMars: any = (<HTMLInputElement>document.getElementById("asterisksMars"));
-    let redStar: any = document.createElement('li');
-    redStar.innerHTML = `<i class="fas fa-star-of-life red"></i>`;
-    starsMars.appendChild(redStar);
-    //starsMars.style.color = "#e73845";
 }
 var reducePowerMars = () => {
     let arrowDownMars: any = answerCodeMars.textContent;
@@ -136,8 +125,6 @@ var reducePowerMars = () => {
             showSpeedMars(rockets[i]);
         }
     }
-    let starsMars: any = (<HTMLInputElement>document.getElementById("asterisksMars"));
-    starsMars.removeChild(starsMars.lastChild);
 }
 var raisePowerSaturn = () => {
     let arrowUpSaturn: any = answerCodeSaturn.textContent;
@@ -148,16 +135,6 @@ var raisePowerSaturn = () => {
             showSpeedSaturn(rockets[i]);
         }
     }
-    let j: number;
-    for (j = 1; j < 10; j++) {
-        let rightStar: any = (<HTMLInputElement>document.getElementById("rightStar0" + j));
-        rightStar.style.display = "none";
-    }
-    let starsSaturn: any = (<HTMLInputElement>document.getElementById("asterisksSaturn"));
-    let blueStar: any = document.createElement('li');
-    blueStar.innerHTML = `<i class="fas fa-star-of-life blue"></i>`;
-    starsSaturn.appendChild(blueStar);
-    //starsSaturn.style.color = "#00b1ff";
 }
 var reducePowerSaturn = () => {
     let arrowDownSaturn: any = answerCodeSaturn.textContent;
@@ -168,8 +145,6 @@ var reducePowerSaturn = () => {
             showSpeedSaturn(rockets[i]);
         }
     }
-    let starsSaturn: any = (<HTMLInputElement>document.getElementById("asterisksSaturn"));
-    starsSaturn.removeChild(starsSaturn.lastChild);
 }
 
 var deleteObjRocket = (code: string) => {
@@ -206,7 +181,7 @@ var showDataMars = (rocket: Rocket) => {
     for (j = 0; j < rocket.thrusters.length; j++) {
         answerPowerMars.innerHTML += `${rocket.thrusters[j].maxPower} `;
     }
-    answerSpeedMars.innerHTML = `${rocket.calculateSpeed()}`;
+    answerSpeedMars.innerHTML = `${rocket.currentSpeed()}`;
 }
 
 var showDataSaturn = (rocket: Rocket) => {
@@ -220,7 +195,7 @@ var showDataSaturn = (rocket: Rocket) => {
     for (j = 0; j < rocket.thrusters.length; j++) {
         answerPowerSaturn.innerHTML += `${rocket.thrusters[j].maxPower} `;
     }
-    answerSpeedSaturn.innerHTML = `${rocket.calculateSpeed()}`;
+    answerSpeedSaturn.innerHTML = `${rocket.currentSpeed()}`;
 }
 
 var deleteRocketMars = (code: string) => {
@@ -295,11 +270,11 @@ var hideRocketSaturn = () => {
 
 // Passar més o menys potència segons apreti més o menys
 var showSpeedMars = (rocket: Rocket) => {
-    answerSpeedMars.innerHTML = `${rocket.calculateSpeed()}`;
+    answerSpeedMars.innerHTML = `${rocket.currentSpeed()}`;
 }
 
 var showSpeedSaturn = (rocket: Rocket) => {
-    answerSpeedSaturn.innerHTML = `${rocket.calculateSpeed()}`;
+    answerSpeedSaturn.innerHTML = `${rocket.currentSpeed()}`;
 }
 
 // Mostrar inputs segons el nº de propulsors escollit, entre 1 i 9

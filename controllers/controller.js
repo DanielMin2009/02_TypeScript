@@ -88,7 +88,7 @@ var createThrusters = (thrusters) => {
     return thrusters;
 };
 // En aquest punt, quan vull tornar a controlar la 
-var raisePowerMars = () => {
+var raisePowerMars = (thrusters) => {
     let arrowUpMars = answerCodeMars.textContent;
     let i;
     for (i = 0; i < rockets.length; i++) {
@@ -98,16 +98,6 @@ var raisePowerMars = () => {
             console.log(showSpeedMars(rockets[i]));
         }
     }
-    let j;
-    for (j = 1; j < 10; j++) {
-        let leftStar = document.getElementById("leftStar0" + j);
-        leftStar.style.display = "none";
-    }
-    let starsMars = document.getElementById("asterisksMars");
-    let redStar = document.createElement('li');
-    redStar.innerHTML = `<i class="fas fa-star-of-life red"></i>`;
-    starsMars.appendChild(redStar);
-    //starsMars.style.color = "#e73845";
 };
 var reducePowerMars = () => {
     let arrowDownMars = answerCodeMars.textContent;
@@ -118,8 +108,6 @@ var reducePowerMars = () => {
             showSpeedMars(rockets[i]);
         }
     }
-    let starsMars = document.getElementById("asterisksMars");
-    starsMars.removeChild(starsMars.lastChild);
 };
 var raisePowerSaturn = () => {
     let arrowUpSaturn = answerCodeSaturn.textContent;
@@ -130,16 +118,6 @@ var raisePowerSaturn = () => {
             showSpeedSaturn(rockets[i]);
         }
     }
-    let j;
-    for (j = 1; j < 10; j++) {
-        let rightStar = document.getElementById("rightStar0" + j);
-        rightStar.style.display = "none";
-    }
-    let starsSaturn = document.getElementById("asterisksSaturn");
-    let blueStar = document.createElement('li');
-    blueStar.innerHTML = `<i class="fas fa-star-of-life blue"></i>`;
-    starsSaturn.appendChild(blueStar);
-    //starsSaturn.style.color = "#00b1ff";
 };
 var reducePowerSaturn = () => {
     let arrowDownSaturn = answerCodeSaturn.textContent;
@@ -150,8 +128,6 @@ var reducePowerSaturn = () => {
             showSpeedSaturn(rockets[i]);
         }
     }
-    let starsSaturn = document.getElementById("asterisksSaturn");
-    starsSaturn.removeChild(starsSaturn.lastChild);
 };
 var deleteObjRocket = (code) => {
     for (let i = 0; i < rockets.length; i++) {
@@ -183,7 +159,7 @@ var showDataMars = (rocket) => {
     for (j = 0; j < rocket.thrusters.length; j++) {
         answerPowerMars.innerHTML += `${rocket.thrusters[j].maxPower} `;
     }
-    answerSpeedMars.innerHTML = `${rocket.calculateSpeed()}`;
+    answerSpeedMars.innerHTML = `${rocket.currentSpeed()}`;
 };
 var showDataSaturn = (rocket) => {
     listSaturn.style.display = "block";
@@ -194,7 +170,7 @@ var showDataSaturn = (rocket) => {
     for (j = 0; j < rocket.thrusters.length; j++) {
         answerPowerSaturn.innerHTML += `${rocket.thrusters[j].maxPower} `;
     }
-    answerSpeedSaturn.innerHTML = `${rocket.calculateSpeed()}`;
+    answerSpeedSaturn.innerHTML = `${rocket.currentSpeed()}`;
 };
 var deleteRocketMars = (code) => {
     code = answerCodeMars.textContent;
@@ -254,10 +230,10 @@ var hideRocketSaturn = () => {
 };
 // Passar més o menys potència segons apreti més o menys
 var showSpeedMars = (rocket) => {
-    answerSpeedMars.innerHTML = `${rocket.calculateSpeed()}`;
+    answerSpeedMars.innerHTML = `${rocket.currentSpeed()}`;
 };
 var showSpeedSaturn = (rocket) => {
-    answerSpeedSaturn.innerHTML = `${rocket.calculateSpeed()}`;
+    answerSpeedSaturn.innerHTML = `${rocket.currentSpeed()}`;
 };
 // Mostrar inputs segons el nº de propulsors escollit, entre 1 i 9
 function showPowerInputs(introNum) {

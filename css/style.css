@@ -147,6 +147,7 @@ form label {
     border-radius      : 3px;
     margin-bottom      : 1.1rem;
 }
+
 .griddy2 {
     display              : grid;
     grid-template-columns: 1fr 1fr;
@@ -287,6 +288,7 @@ form label {
     color: #00b1ff;
 }
 
+
 /* ============================END OF COMMON STYLES============================== */
 
 /* * Button */
@@ -362,8 +364,6 @@ form label {
 .close-button:focus {
     outline: none;
 }
-
-
 
 .close-button:after,
 .close-button:before {
@@ -713,14 +713,30 @@ select::-ms-expand {
     direction: rtl;
 }
 
+
 .myFlexLeft li,
 .myFlexRight li {
     list-style : none;
-    line-height: 200%;
-    font-size  : 0.7rem;
-    color      : #f4f4f4;
+    line-height: 170%;
+    font-size  : 0.6em;
     margin     : 0;
 }
+
+
+#asterisksMars,
+#asterisksSaturn {
+    position: absolute;
+    bottom  : 60px;
+}
+
+#asterisksMars {
+    right: 15%;
+}
+
+#asterisksSaturn {
+    left: 15%;
+}
+
 
 /** ARROWS **/
 
