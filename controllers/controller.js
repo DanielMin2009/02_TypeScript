@@ -143,12 +143,10 @@ var deleteObjRocket = (code) => {
 var showRocketMars = () => {
     rocketSaturnImg.classList.remove("offset-lg-6");
     rocketMarsImg.classList.remove("d-none");
-    //openFormMarsBtn.classList.add("d-none");
     openFormMarsBtn.style.display = "none";
 };
 var showRocketSaturn = () => {
     rocketSaturnImg.classList.remove("d-none");
-    //openFormSaturnBtn.classList.add("d-none");
     openFormSaturnBtn.style.display = "none";
 };
 var showDataMars = (rocket) => {

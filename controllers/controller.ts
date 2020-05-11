@@ -54,7 +54,6 @@ let openFormSaturnBtn: any = (<HTMLInputElement>document.getElementById("openFor
 let starsMarsUl: any = document.getElementById("asterisksMars");
 let starsSaturnUl: any = document.getElementById("asterisksSaturn");
 
-
 // onload amago alguns elements del DOM perquè en tornar a crear el coet es bloqueja el d-none de bootstrap
 var displaElements = () => {
     listMars.style.display = "none";
@@ -164,13 +163,11 @@ var deleteObjRocket = (code: string) => {
 var showRocketMars = () => {
     rocketSaturnImg.classList.remove("offset-lg-6");
     rocketMarsImg.classList.remove("d-none");
-    //openFormMarsBtn.classList.add("d-none");
     openFormMarsBtn.style.display = "none";
 }
 
 var showRocketSaturn = () => {
     rocketSaturnImg.classList.remove("d-none");
-    //openFormSaturnBtn.classList.add("d-none");
     openFormSaturnBtn.style.display = "none";
 }
 
