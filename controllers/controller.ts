@@ -217,7 +217,7 @@ var deleteRocketMars = (code: string) => {
     do {
         starsMarsUl.removeChild(starsMarsUl.firstChild);
     }
-    while (starsMarsUl.firstChild);
+    while (starsMarsUl.firstChild != null);
 
     deleteObjRocket(code);
 }
@@ -238,7 +238,7 @@ var deleteRocketSaturn = (code: string) => {
     do {
         starsSaturnUl.removeChild(starsSaturnUl.firstChild);
     }
-    while (starsSaturnUl.firstChild);
+    while (starsSaturnUl.firstChild != null);
 
     deleteObjRocket(code);
 }
@@ -258,7 +258,7 @@ var hideRocketMars = () => {
     do {
         starsMarsUl.removeChild(starsMarsUl.firstChild);
     }
-    while (starsMarsUl.firstChild);
+    while (starsMarsUl.firstChild != null);
 }
 
 var hideRocketSaturn = () => {
@@ -275,7 +275,7 @@ var hideRocketSaturn = () => {
     do {
         starsSaturnUl.removeChild(starsSaturnUl.firstChild);
     }
-    while (starsSaturnUl.firstChild);
+    while (starsSaturnUl.firstChild != null);
 }
 
 // Passar més o menys potència segons apreti més o menys

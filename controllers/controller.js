@@ -186,7 +186,7 @@ var deleteRocketMars = (code) => {
     // Mentre hi hagi un first child anirà esborrant. Quan no n'hi hagi no. While perquè no sabem el número de childs.
     do {
         starsMarsUl.removeChild(starsMarsUl.firstChild);
-    } while (starsMarsUl.firstChild);
+    } while (starsMarsUl.firstChild != null);
     deleteObjRocket(code);
 };
 var deleteRocketSaturn = (code) => {
@@ -202,7 +202,7 @@ var deleteRocketSaturn = (code) => {
     // Mentre hi hagi un first child anirà esborrant. Quan no n'hi hagi no. While perquè no sabem el número de childs.
     do {
         starsSaturnUl.removeChild(starsSaturnUl.firstChild);
-    } while (starsSaturnUl.firstChild);
+    } while (starsSaturnUl.firstChild != null);
     deleteObjRocket(code);
 };
 var hideRocketMars = () => {
@@ -217,7 +217,7 @@ var hideRocketMars = () => {
     answerSpeedMars.innerHTML = "";
     do {
         starsMarsUl.removeChild(starsMarsUl.firstChild);
-    } while (starsMarsUl.firstChild);
+    } while (starsMarsUl.firstChild != null);
 };
 var hideRocketSaturn = () => {
     rocketSaturnImg.classList.add("d-none");
@@ -230,7 +230,7 @@ var hideRocketSaturn = () => {
     answerSpeedSaturn.innerHTML = "";
     do {
         starsSaturnUl.removeChild(starsSaturnUl.firstChild);
-    } while (starsSaturnUl.firstChild);
+    } while (starsSaturnUl.firstChild != null);
 };
 // Passar més o menys potència segons apreti més o menys
 var showSpeedMars = (rocket) => {
