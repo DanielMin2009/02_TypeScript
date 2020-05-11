@@ -212,12 +212,6 @@ var deleteRocketMars = (code: string) => {
     answerPowerMars.innerHTML = "";
     answerSpeedMars.innerHTML = "";
 
-    let j: number;
-    for (j = 1; j < 10; j++) {
-        let leftStar: any = (<HTMLInputElement>document.getElementById("leftStar0" + j));
-        leftStar.style.color = "#00b1ff";
-    }
-
     deleteObjRocket(code);
 }
 
@@ -232,12 +226,6 @@ var deleteRocketSaturn = (code: string) => {
     answerNumSaturn.innerHTML = "";
     answerPowerSaturn.innerHTML = "";
     answerSpeedSaturn.innerHTML = "";
-
-    let j: number;
-    for (j = 1; j < 10; j++) {
-        let rightStar: any = (<HTMLInputElement>document.getElementById("rightStar0" + j));
-        rightStar.style.color = "#00b1ff";
-    }
 
     deleteObjRocket(code);
 }

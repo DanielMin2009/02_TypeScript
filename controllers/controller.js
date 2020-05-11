@@ -183,11 +183,6 @@ var deleteRocketMars = (code) => {
     answerNumMars.innerHTML = "";
     answerPowerMars.innerHTML = "";
     answerSpeedMars.innerHTML = "";
-    let j;
-    for (j = 1; j < 10; j++) {
-        let leftStar = document.getElementById("leftStar0" + j);
-        leftStar.style.color = "#00b1ff";
-    }
     deleteObjRocket(code);
 };
 var deleteRocketSaturn = (code) => {
@@ -200,11 +195,6 @@ var deleteRocketSaturn = (code) => {
     answerNumSaturn.innerHTML = "";
     answerPowerSaturn.innerHTML = "";
     answerSpeedSaturn.innerHTML = "";
-    let j;
-    for (j = 1; j < 10; j++) {
-        let rightStar = document.getElementById("rightStar0" + j);
-        rightStar.style.color = "#00b1ff";
-    }
     deleteObjRocket(code);
 };
 var hideRocketMars = () => {
