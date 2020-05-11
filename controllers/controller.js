@@ -40,6 +40,8 @@ let answerPowerSaturn = document.getElementById("answerPowerSaturn");
 let answerSpeedSaturn = document.getElementById("answerSpeedSaturn");
 let openFormMarsBtn = document.getElementById("openFormMars");
 let openFormSaturnBtn = document.getElementById("openFormSaturn");
+let starsMarsUl = document.getElementById("asterisksMars");
+let starsSaturnUl = document.getElementById("asterisksSaturn");
 // onload amago alguns elements del DOM perquè en tornar a crear el coet es bloqueja el d-none de bootstrap
 var displaElements = () => {
     listMars.style.display = "none";
@@ -88,7 +90,7 @@ var createThrusters = (thrusters) => {
     return thrusters;
 };
 // En aquest punt, quan vull tornar a controlar la 
-var raisePowerMars = (thrusters) => {
+var raisePowerMars = () => {
     let arrowUpMars = answerCodeMars.textContent;
     let i;
     for (i = 0; i < rockets.length; i++) {
@@ -183,6 +185,10 @@ var deleteRocketMars = (code) => {
     answerNumMars.innerHTML = "";
     answerPowerMars.innerHTML = "";
     answerSpeedMars.innerHTML = "";
+    // Mentre hi hagi un first child anirà esborrant. Quan no n'hi hagi no. While perquè no sabem el número de childs.
+    while (starsMarsUl.firstChild) {
+        starsMarsUl.removeChild(starsMarsUl.firstChild);
+    }
     deleteObjRocket(code);
 };
 var deleteRocketSaturn = (code) => {
@@ -195,6 +201,10 @@ var deleteRocketSaturn = (code) => {
     answerNumSaturn.innerHTML = "";
     answerPowerSaturn.innerHTML = "";
     answerSpeedSaturn.innerHTML = "";
+    // Mentre hi hagi un first child anirà esborrant. Quan no n'hi hagi no. While perquè no sabem el número de childs.
+    while (starsSaturnUl.firstChild) {
+        starsSaturnUl.removeChild(starsSaturnUl.firstChild);
+    }
     deleteObjRocket(code);
 };
 var hideRocketMars = () => {
@@ -207,6 +217,9 @@ var hideRocketMars = () => {
     answerNumMars.innerHTML = "";
     answerPowerMars.innerHTML = "";
     answerSpeedMars.innerHTML = "";
+    while (starsMarsUl.firstChild) {
+        starsMarsUl.removeChild(starsMarsUl.firstChild);
+    }
 };
 var hideRocketSaturn = () => {
     rocketSaturnImg.classList.add("d-none");
@@ -217,6 +230,9 @@ var hideRocketSaturn = () => {
     answerNumSaturn.innerHTML = "";
     answerPowerSaturn.innerHTML = "";
     answerSpeedSaturn.innerHTML = "";
+    while (starsSaturnUl.firstChild) {
+        starsSaturnUl.removeChild(starsSaturnUl[0]);
+    }
 };
 // Passar més o menys potència segons apreti més o menys
 var showSpeedMars = (rocket) => {

@@ -51,6 +51,10 @@ let answerSpeedSaturn: any = (<HTMLInputElement>document.getElementById("answerS
 let openFormMarsBtn: any = (<HTMLInputElement>document.getElementById("openFormMars"));
 let openFormSaturnBtn: any = (<HTMLInputElement>document.getElementById("openFormSaturn"));
 
+let starsMarsUl: any = document.getElementById("asterisksMars");
+let starsSaturnUl: any = document.getElementById("asterisksSaturn");
+
+
 // onload amago alguns elements del DOM perquè en tornar a crear el coet es bloqueja el d-none de bootstrap
 var displaElements = () => {
     listMars.style.display = "none";
@@ -105,7 +109,7 @@ var createThrusters = (thrusters: Thruster[]) => {
 }
 
 // En aquest punt, quan vull tornar a controlar la 
-var raisePowerMars = (thrusters: Thruster[]) => {
+var raisePowerMars = () => {
     let arrowUpMars: any = answerCodeMars.textContent;
     let i: number;
     for (i = 0; i < rockets.length; i++) {
@@ -212,6 +216,11 @@ var deleteRocketMars = (code: string) => {
     answerPowerMars.innerHTML = "";
     answerSpeedMars.innerHTML = "";
 
+    // Mentre hi hagi un first child anirà esborrant. Quan no n'hi hagi no. While perquè no sabem el número de childs.
+    while (starsMarsUl.firstChild) {
+        starsMarsUl.removeChild(starsMarsUl.firstChild);
+    }
+
     deleteObjRocket(code);
 }
 
@@ -226,6 +235,11 @@ var deleteRocketSaturn = (code: string) => {
     answerNumSaturn.innerHTML = "";
     answerPowerSaturn.innerHTML = "";
     answerSpeedSaturn.innerHTML = "";
+
+    // Mentre hi hagi un first child anirà esborrant. Quan no n'hi hagi no. While perquè no sabem el número de childs.
+    while (starsSaturnUl.firstChild) {
+        starsSaturnUl.removeChild(starsSaturnUl.firstChild);
+    }
 
     deleteObjRocket(code);
 }
@@ -242,6 +256,9 @@ var hideRocketMars = () => {
     answerPowerMars.innerHTML = "";
     answerSpeedMars.innerHTML = "";
 
+    while (starsMarsUl.firstChild) {
+        starsMarsUl.removeChild(starsMarsUl.firstChild);
+    }
 }
 
 var hideRocketSaturn = () => {
@@ -254,6 +271,10 @@ var hideRocketSaturn = () => {
     answerNumSaturn.innerHTML = "";
     answerPowerSaturn.innerHTML = "";
     answerSpeedSaturn.innerHTML = "";
+    
+    while (starsSaturnUl.firstChild) {
+        starsSaturnUl.removeChild(starsSaturnUl[0]);
+    }
 }
 
 // Passar més o menys potència segons apreti més o menys

@@ -32,6 +32,7 @@ class Rocket {
                 // UI al mètode perquè vagi d'acord amb cada vegada que accelerem
                 let stars: any = (<HTMLInputElement>document.getElementById("asterisks" + this.destination));
                 let star: any = document.createElement('li');
+                star.setAttribute("class", "progressStar");
                 star.innerHTML += `<i class="fas fa-star-of-life red"></i>`;
                 stars.appendChild(star);
                 if (this.destination == "Mars") {
