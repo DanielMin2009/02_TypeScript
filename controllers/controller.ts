@@ -55,7 +55,7 @@ let starsMarsUl: any = document.getElementById("asterisksMars");
 let starsSaturnUl: any = document.getElementById("asterisksSaturn");
 
 // onload amago alguns elements del DOM perquè en tornar a crear el coet es bloqueja el d-none de bootstrap
-var displaElements = () => {
+var displayElements = () => {
     listMars.style.display = "none";
     dataMars.style.display = "none";
     listSaturn.style.display = "none";
